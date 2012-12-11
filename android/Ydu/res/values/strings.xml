@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">YduActivity</string>
+
+  <string name="popup_menu_button">YDU</string>
+
+  <string name="popup_menu_info">Info</string>
+  <string name="popup_menu_developer">Developer</string>
+  <string name="popup_menu_system">System</string>
+
+  <string name="popup_menu_weather">Weather</string>
+
+</resources>
