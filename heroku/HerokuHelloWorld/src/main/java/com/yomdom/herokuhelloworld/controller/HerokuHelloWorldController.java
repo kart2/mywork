@@ -14,7 +14,16 @@ public class HerokuHelloWorldController extends HttpServlet {
   }
 
   public static void main(String[] args) throws Exception{
-    Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+    String portString = System.getenv("PORT");
+    if(portString == null || portString.length() == 0) {
+      System.out.println("Port not set...defaulting to 8080");
+      portString = "8080";
+    }
+
+    int port = Integer.parseInt(portString);
+
+    Server server = new Server(port);
+
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
     context.setContextPath("/");
     server.setHandler(context);
