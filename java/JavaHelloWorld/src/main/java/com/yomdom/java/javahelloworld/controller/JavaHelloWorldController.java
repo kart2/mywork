@@ -55,9 +55,9 @@ public class JavaHelloWorldController {
     Agent.deleteAll();
 
     ArrayList<Agent> agents = new ArrayList<Agent>();
-    agents.add(new Agent("Weather"   , "/Users/seanwright/dev/yd/admin/bin/fred Info Weather KJQF"));
-    agents.add(new Agent("Time"   , "/Users/seanwright/dev/yd/admin/bin/fred Info Time"));
-    agents.add(new Agent("Read"   , "/Users/seanwright/dev/yd/admin/bin/fred Info Read /Users/seanwright/gdrive/Hebrew/CrashCourse/tmp.txt"));
+    agents.add(new Agent("Weather"   , "fred Info Weather KJQF"));
+    agents.add(new Agent("Time"   , "fred Info Time"));
+    agents.add(new Agent("Read"   , "fred Info Read /Users/frederick/gdrive/Hebrew/CrashCourse/tmp.txt"));
 
     Agent.create(agents);
 

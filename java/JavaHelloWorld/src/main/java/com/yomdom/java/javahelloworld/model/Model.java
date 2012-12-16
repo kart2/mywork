@@ -9,7 +9,7 @@ public class Model {
   private static final String DB_DRIVER     = "org.postgresql.Driver";
   private static final String DB_CONNECTION = "jdbc:postgresql://127.0.0.1:5432/ics";
   private static final String DB_USER       = "ics";
-  private static final String DB_PASSWORD   = "WWWwww@@@222";
+  private static final String DB_PASSWORD   = "QQQqqq!!!111";
  
   public static Connection getDBConnection() {
  
