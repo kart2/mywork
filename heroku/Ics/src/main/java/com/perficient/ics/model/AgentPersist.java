@@ -1,5 +1,9 @@
 package com.perficient.ics.model;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
+import org.codehaus.jackson.map.type.TypeFactory;
+
 import java.util.*;
 import java.net.*;
 import java.io.*;
@@ -144,6 +148,51 @@ public class AgentPersist extends Model {
       }
     }
 
+  }
+
+  public static String toJsonGrid(ArrayList<Agent> agents) {
+
+    HashMap<String, Object> agentMap = new HashMap<String, Object>();
+
+    agentMap.put("total", "1");
+    agentMap.put("page", "1");
+    agentMap.put("records", String.valueOf(agents.size()));
+
+    ArrayList<HashMap<String,Object>> rows = new ArrayList<HashMap<String,Object>>();
+
+    int rowNumber = 1;
+
+    for(Agent agent : agents) {
+      HashMap<String,Object> row = new HashMap<String,Object>();
+
+      row.put("id", String.valueOf(rowNumber));
+
+      ArrayList<String> fields = new ArrayList<String>();
+      fields.add(String.valueOf(rowNumber));
+      fields.add(agent.getName());
+      fields.add(agent.getDescription());
+
+      row.put("cell", fields);
+
+      rows.add(row);
+
+      rowNumber++;
+    }
+
+    agentMap.put("rows", rows);
+
+    // Convert list to JSON
+    ObjectMapper mapper = new ObjectMapper();
+    String json = "";
+
+    try {
+      json = mapper.writeValueAsString(agentMap);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return json;
   }
  
 }
