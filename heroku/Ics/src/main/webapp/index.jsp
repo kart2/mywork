@@ -35,6 +35,7 @@
     <h2>Agents</h2>
     <table id="agent_list"></table>
     <div id="agent_list_pager"></div>
+    <a href="/agent-create">Create Agents</a>
   </body>
 </html>
 
