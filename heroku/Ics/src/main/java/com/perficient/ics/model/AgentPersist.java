@@ -29,11 +29,11 @@ public class AgentPersist extends Model {
       ResultSet rs = preparedStatement.executeQuery();
  
       while (rs.next()) {
-        String agentId     = rs.getString("agent_id");
+        int agentId        = rs.getInt("agent_id");
         String name        = rs.getString("name");
         String description = rs.getString("description");
  
-        agents.add(new Agent(name, description));
+        agents.add(new Agent(agentId, name, description));
       }
  
     } 

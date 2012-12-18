@@ -30,8 +30,8 @@ public class AgentCreateController extends HttpServlet {
     Agent.deleteAll();
 
     ArrayList<Agent> agents = new ArrayList<Agent>();
-    agents.add(new Agent("Weather"   , "fred Info Weather KJQF"));
-    agents.add(new Agent("Time"   , "fred Info Time"));
+    agents.add(new Agent(0, "Weather"   , "fred Info Weather KJQF"));
+    agents.add(new Agent(0, "Time"   , "fred Info Time"));
 
     Agent.create(agents);
 
