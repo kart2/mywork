@@ -2,6 +2,7 @@ function MainController() {
 
   this.productList   = productList;
   this.productCreate = productCreate;
+  this.productInit   = productInit;
 
   function productList() {
     $("#product-list").jqGrid({
@@ -33,6 +34,21 @@ function MainController() {
         dataType: 'json',
         success: function(data) {
           $('#product-create-message').text(data.message);
+          $('#product-list').trigger("reloadGrid",[{page:1}]);
+        }
+      });
+    });
+  }
+
+  function productInit() {
+    $('#product-init').click(function() {
+      $.ajax({
+        url:'/product-init',
+        type:'post',
+        dataType: 'json',
+        success: function(data) {
+          $('#product-init-message').text(data.message);
+          $('#product-list').trigger("reloadGrid",[{page:1}]);
         }
       });
     });

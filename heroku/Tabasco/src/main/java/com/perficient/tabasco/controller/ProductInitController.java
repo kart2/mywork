@@ -24,14 +24,15 @@ import com.perficient.tabasco.model.Product;
     urlPatterns = {"/product-init"}
   )
 
-public class ProductInitController extends HttpServlet {
+public class ProductInitController extends Controller {
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  public void doController(HttpServletRequest req, HttpServletResponse resp) {
     Product.init();
+
     try {
-      RequestDispatcher dispatcher = req.getRequestDispatcher("/");
-      dispatcher.forward(req, resp);
+      ServletOutputStream out = resp.getOutputStream();
+      out.write("{ \"message\" : \"Product database re-created.\" }".getBytes());
     }
     catch(Exception e) {
       e.printStackTrace();

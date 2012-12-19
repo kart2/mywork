@@ -15,6 +15,7 @@
         var mainController = new MainController();
         mainController.productList();
         mainController.productCreate();
+        mainController.productInit();
       });
     </script>
     <h2>Products</h2>

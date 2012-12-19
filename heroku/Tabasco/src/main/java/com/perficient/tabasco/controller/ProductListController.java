@@ -24,10 +24,9 @@ import com.perficient.tabasco.model.Product;
     urlPatterns = {"/product-list"}
   )
 
-public class ProductListController extends HttpServlet {
+public class ProductListController extends Controller {
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    ServletOutputStream out = resp.getOutputStream();
+  public void doController(HttpServletRequest req, HttpServletResponse resp) {
 
     ArrayList<Product> products = null;
     try {
@@ -37,10 +36,16 @@ public class ProductListController extends HttpServlet {
       ex.printStackTrace();
     }
 
-    String json = Product.toJsonGrid(products);
-    out.write(json.getBytes());
+    try {
+      ServletOutputStream out = resp.getOutputStream();
+      String json = Product.toJsonGrid(products);
+      out.write(json.getBytes());
     
-    out.flush();
-    out.close();
+      out.flush();
+      out.close();
+    }
+    catch(Exception ex) {
+      ex.printStackTrace();
+    }
   }
 }
