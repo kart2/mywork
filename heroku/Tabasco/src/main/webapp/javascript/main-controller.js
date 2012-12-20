@@ -9,20 +9,22 @@ function MainController() {
       url:'http://localhost:8080/product-list',
       datatype: 'json',
       mtype: 'GET',
-      colNames:['Id', 'Name','Description'],
+      colNames:['Id', 'Name', 'Description', 'Price'],
       colModel :[ 
-        {name:'id', index:'id', width:200}, 
-        {name:'name', index:'name', width:200}, 
-        {name:'description', index:'description', width:250} 
+        {name:'id', index:'id', width:50}, 
+        {name:'name', index:'name', width:350}, 
+        {name:'description', index:'description', width:600, cellattr: function (rowId, tv, rawObject, cm, rdata) { return 'style="white-space: normal;"' }},
+        {name:'price', index:'price', width:150, align:'right',formatter:'currency'} 
       ],
       pager: '#product-list-pager',
-      rowNum:10,
-      rowList:[10,20,30],
+      rowNum:50,
+      rowList:[50,100,200],
       sortname: 'name',
       sortorder: 'desc',
       viewrecords: true,
       gridview: true,
-      caption: 'Products'
+      caption: 'Products',
+      height:400
     });
   }
 

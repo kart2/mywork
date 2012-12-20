@@ -228,7 +228,8 @@ public class ProductPersist extends Model {
       //fields.add(product.getItem());
       //fields.add(product.getModel());
       fields.add(product.getDescription());
-      //fields.add(String.valueOf(product.getPrice()));
+      //fields.add(product.getUrl());
+      fields.add(String.valueOf(product.getPrice()));
 
       row.put("cell", fields);
 

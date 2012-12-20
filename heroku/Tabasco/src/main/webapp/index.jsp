@@ -8,6 +8,11 @@
     <script src="jqgrid/js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="jqgrid/js/i18n/grid.locale-en.js" type="text/javascript"></script>
     <script src="jqgrid/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <style>
+      .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+      }
+    </style>
   </head>
   <body>
     <script type="text/javascript">
