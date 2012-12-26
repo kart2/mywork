@@ -9,6 +9,8 @@ import java.net.*;
 import java.io.*;
 import java.sql.*;
 
+import model.*;
+
 public class AgentPersist extends Model {
 
   public static void init() {
@@ -60,7 +62,7 @@ public class AgentPersist extends Model {
     Connection dbConnection = null;
     PreparedStatement preparedStatement = null;
  
-    String selectSQL = "SELECT agent_id AS agentId, name, description FROM agent";
+    String selectSQL = "SELECT agent_id, name, description FROM agent";
  
     try {
       dbConnection = getDBConnection();
@@ -71,7 +73,7 @@ public class AgentPersist extends Model {
       ResultSet rs = preparedStatement.executeQuery();
  
       while (rs.next()) {
-        int agentId        = rs.getInt("agentId");
+        int agentId        = rs.getInt("agent_id");
         String name        = rs.getString("name");
         String description = rs.getString("description");
  
@@ -106,8 +108,8 @@ public class AgentPersist extends Model {
     PreparedStatement preparedStatement = null;
  
     String insertTableSQL = "INSERT INTO agent"
-        + "(name, item, model, description, url, price) VALUES"
-        + "(?,?,?,?,?,?)";
+        + "(name, description) VALUES"
+        + "(?,?)";
  
     try {
       dbConnection = getDBConnection();
@@ -117,11 +119,7 @@ public class AgentPersist extends Model {
 
       for(Agent agent : agents) {
         preparedStatement.setString(1, agent.getName());
-        preparedStatement.setString(2, agent.getItem());
-        preparedStatement.setString(3, agent.getModel());
-        preparedStatement.setString(4, agent.getDescription());
-        preparedStatement.setString(5, agent.getUrl());
-        preparedStatement.setDouble(6, agent.getPrice());
+        preparedStatement.setString(2, agent.getDescription());
         preparedStatement.addBatch();
       }
  
@@ -216,11 +214,7 @@ public class AgentPersist extends Model {
       ArrayList<String> fields = new ArrayList<String>();
       fields.add(String.valueOf(rowNumber));
       fields.add(agent.getName());
-      //fields.add(agent.getItem());
-      //fields.add(agent.getModel());
       fields.add(agent.getDescription());
-      //fields.add(agent.getUrl());
-      fields.add(String.valueOf(agent.getPrice()));
 
       row.put("cell", fields);
 
