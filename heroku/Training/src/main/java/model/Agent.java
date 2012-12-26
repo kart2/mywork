@@ -1,6 +1,8 @@
 package model;
 
-public class Agent {
+import model.persist.*;
+
+public class Agent extends AgentPersist {
   private int agentId;
   private String name;
   private String description;
