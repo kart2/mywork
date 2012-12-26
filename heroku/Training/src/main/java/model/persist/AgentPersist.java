@@ -1,5 +1,5 @@
 package model.persist;
 
-public class AgentPersist.java {
+public class AgentPersist {
 
 }

@@ -1,7 +1,5 @@
 package model.persist;
 
-public class Model {
-
 import java.util.*;
 import java.net.*;
 import java.io.*;
