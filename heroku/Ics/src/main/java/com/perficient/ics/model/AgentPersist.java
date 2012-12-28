@@ -11,6 +11,50 @@ import java.sql.*;
 
 public class AgentPersist extends Model {
 
+  public static void init() {
+    ArrayList<String> sqlCommands = new ArrayList<String>();
+    sqlCommands.add("DROP TABLE IF EXISTS agent");
+
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("CREATE TABLE agent (");
+    stringBuilder.append("agent_id serial PRIMARY KEY,");
+    stringBuilder.append("name text NOT NULL,");
+    stringBuilder.append("description text NOT NULL");
+    stringBuilder.append(");");
+
+    sqlCommands.add(stringBuilder.toString());
+
+    for(String sql : sqlCommands) {
+
+      Connection dbConnection = null;
+      Statement statement = null;
+  
+      try {
+        dbConnection = getDBConnection();
+        statement    = dbConnection.createStatement();
+        statement.executeUpdate(sql);
+      }
+      catch (SQLException e) {
+        System.out.println(e.getMessage());
+      }
+      finally {
+        try {
+          if (statement != null) {
+            statement.close();
+          }
+    
+          if (dbConnection != null) {
+            dbConnection.close();
+          }
+        }
+        catch(SQLException e) {
+          System.out.println(e.getMessage());
+        }
+      }
+    }
+  }
+
+
   public static ArrayList<Agent> list() {
     ArrayList<Agent> agents = new ArrayList<Agent>();
  
@@ -150,36 +194,27 @@ public class AgentPersist extends Model {
 
   }
 
-  public static String toJsonGrid(ArrayList<Agent> agents) {
+  public static String toJsonDataTable(ArrayList<Agent> agents) {
 
     HashMap<String, Object> agentMap = new HashMap<String, Object>();
 
-    agentMap.put("total", "1");
-    agentMap.put("page", "1");
-    agentMap.put("records", String.valueOf(agents.size()));
+    agentMap.put("sEcho", "1");
+    agentMap.put("iTotalRecords", String.valueOf(agents.size()));
+    agentMap.put("iTotalDisplayRecords", String.valueOf(agents.size()));
 
-    ArrayList<HashMap<String,Object>> rows = new ArrayList<HashMap<String,Object>>();
-
-    int rowNumber = 1;
+    ArrayList<ArrayList<String>> rows = new ArrayList<ArrayList<String>>();
 
     for(Agent agent : agents) {
-      HashMap<String,Object> row = new HashMap<String,Object>();
-
-      row.put("id", String.valueOf(rowNumber));
 
       ArrayList<String> fields = new ArrayList<String>();
-      fields.add(String.valueOf(rowNumber));
+      fields.add(String.valueOf(agent.getAgentId()));
       fields.add(agent.getName());
       fields.add(agent.getDescription());
 
-      row.put("cell", fields);
-
-      rows.add(row);
-
-      rowNumber++;
+      rows.add(fields);
     }
 
-    agentMap.put("rows", rows);
+    agentMap.put("aaData", rows);
 
     // Convert list to JSON
     ObjectMapper mapper = new ObjectMapper();
