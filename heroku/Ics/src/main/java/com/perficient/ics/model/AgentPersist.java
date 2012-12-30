@@ -194,34 +194,14 @@ public class AgentPersist extends Model {
 
   }
 
-  public static String toJsonDataTable(ArrayList<Agent> agents) {
-
-    HashMap<String, Object> agentMap = new HashMap<String, Object>();
-
-    agentMap.put("sEcho", "1");
-    agentMap.put("iTotalRecords", String.valueOf(agents.size()));
-    agentMap.put("iTotalDisplayRecords", String.valueOf(agents.size()));
-
-    ArrayList<ArrayList<String>> rows = new ArrayList<ArrayList<String>>();
-
-    for(Agent agent : agents) {
-
-      ArrayList<String> fields = new ArrayList<String>();
-      fields.add(String.valueOf(agent.getAgentId()));
-      fields.add(agent.getName());
-      fields.add(agent.getDescription());
-
-      rows.add(fields);
-    }
-
-    agentMap.put("aaData", rows);
+  public static String toJson(ArrayList<Agent> agents) {
 
     // Convert list to JSON
     ObjectMapper mapper = new ObjectMapper();
     String json = "";
 
     try {
-      json = mapper.writeValueAsString(agentMap);
+      json = mapper.writeValueAsString(agents);
     }
     catch (Exception e) {
       e.printStackTrace();

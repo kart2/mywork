@@ -12,8 +12,6 @@ import java.sql.*;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 
-
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +39,7 @@ public class IcsController extends HttpServlet {
       ex.printStackTrace();
     }
 
-    String json = Agent.toJsonGrid(agents);
+    String json = Agent.toJson(agents);
     out.write(json.getBytes());
     
     out.flush();

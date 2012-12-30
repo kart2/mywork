@@ -3,25 +3,18 @@ function MainController() {
   this.agentList = agentList;
 
   function agentList() {
-    $("#agent_list").jqGrid({
-      url:'http://localhost:8080/ics',
-      datatype: 'json',
-      mtype: 'GET',
-      colNames:['Id', 'Name','Description'],
-      colModel :[ 
-        {name:'id', index:'id', width:200}, 
-        {name:'name', index:'name', width:200}, 
-        {name:'description', index:'description', width:250} 
-      ],
-      pager: '#agent_list_pager',
-      rowNum:10,
-      rowList:[10,20,30],
-      sortname: 'name',
-      sortorder: 'desc',
-      viewrecords: true,
-      gridview: true,
-      caption: 'Agents'
-    }); 
-  }
 
+    $.getJSON('/ics', function(data) {
+      var items = [];
+    
+      $.each(data, function(index) {
+        items.push('<li><div style="font-weight:bold">' + data[index].name + '</div><div style="font-style:"italic">' + data[index].description + '</div><div style="font-style:"italic">' + data[index].description + '</div><div style="font-style="italic">' + data[index].description + '</div><div style="font-style="italic">' + data[index].description + '</div><div style="font-style="italic">' + data[index].description + '</div></li>');
+      });
+    
+      $('<ul />', {
+        'class': 'my-new-list',
+        html: items.join('')
+      }).appendTo('body');
+    });
+  }
 }
