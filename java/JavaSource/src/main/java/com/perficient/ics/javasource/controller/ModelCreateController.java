@@ -17,7 +17,9 @@ public class ModelCreateController {
                  .append(".model;\n\n");
 
 
-    // Imports 
+    // Standard Imports 
+    sourceBuilder.append("// Standard Imports");
+    sourceBuilder.append("\n");
     sourceBuilder.append("import java.util.*;");
     sourceBuilder.append("\n");
     sourceBuilder.append("import java.net.*;");
@@ -27,7 +29,17 @@ public class ModelCreateController {
     sourceBuilder.append("import java.sql.*;");
     sourceBuilder.append("\n");
     sourceBuilder.append("\n");
+
+    // Custom Imports 
+    sourceBuilder.append("// Custom Imports");
+    sourceBuilder.append("\n");
+    for(String importString : project.getImports()) {
+      sourceBuilder.append("import ");
+      sourceBuilder.append(importString);
+      sourceBuilder.append(";\n");
+    }
     
+    sourceBuilder.append("\n");
 
     // Class definition
     sourceBuilder.append("public class Model {");

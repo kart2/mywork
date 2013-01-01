@@ -1,3 +1,19 @@
 {
-  "name" :  "test"
+  "name" :  "test",
+  "imports" :  
+    [
+      "java.io.*",
+      "java.net.*"
+    ],
+  "properties" :
+    [
+      {
+        "type" : "String",
+        "name" : "name"
+      },
+      {
+        "type" : "String",
+        "name" : "description"
+      }
+    ]
 }
