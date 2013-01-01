@@ -16,6 +16,14 @@ public class ModelCreateController {
                  .append(projectName)
                  .append(";\n\n");
 
+
+    // Imports 
+    sourceBuilder.append("import java.util.*;");
+    sourceBuilder.append("import java.net.*;");
+    sourceBuilder.append("import java.io.*;");
+    sourceBuilder.append("import java.sql.*;");
+    
+
     // Class definition
     sourceBuilder.append("public class ")
                  .append(className)
