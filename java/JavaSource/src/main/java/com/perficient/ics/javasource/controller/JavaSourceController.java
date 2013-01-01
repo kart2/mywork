@@ -8,17 +8,16 @@ public class JavaSourceController {
   public static void main( String[] args ) {
     int length = args.length;
      
-    if (length <= 0) {
-      System.out.println("You need to enter some arguments.");  
+    if (length != 1) {
+      System.out.println("Usage: JavaSourceController <JSON File>");  
+      System.exit(-1);
     }
 
-    for (int i = 0; i < length; i++) {
-      System.out.println(args[i]);
-     
-    }
+    String jsonFileName = args[0];
+
+    System.out.println("JSON File: " + jsonFileName + "\n");
+
+    ModelCreateController modelCreate = new ModelCreateController();
   }  
 }
-  
-
-
 
