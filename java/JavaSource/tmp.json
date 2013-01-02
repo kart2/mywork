@@ -1,19 +1,20 @@
 {
-  "name" :  "test",
-  "imports" :  
+  "projectName" :  "example",
+  "className"   :  "Product",
+  "imports"     :  
     [
       "java.io.*",
       "java.net.*"
     ],
-  "properties" :
+  "properties"  :
     [
       {
-        "type" : "String",
-        "name" : "name"
+        "type"  : "String",
+        "name"  : "name"
       },
       {
-        "type" : "String",
-        "name" : "description"
+        "type"  : "String",
+        "name"  : "description"
       }
     ]
 }

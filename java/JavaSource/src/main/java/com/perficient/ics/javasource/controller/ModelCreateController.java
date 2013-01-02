@@ -10,99 +10,64 @@ public class ModelCreateController {
   public ModelCreateController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
-
     // Package
-    sourceBuilder.append("package com.perficient.ics.")
-                 .append(project.getName())
-                 .append(".model;\n\n");
-
+    sourceBuilder.append("package com.perficient.ics." + project.getProjectName() + ".model;\n\n");
 
     // Standard Imports 
-    sourceBuilder.append("// Standard Imports");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("import java.util.*;");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("import java.net.*;");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("import java.io.*;");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("import java.sql.*;");
-    sourceBuilder.append("\n");
+    sourceBuilder.append("// Standard Imports\n");
+    sourceBuilder.append("import java.util.*;\n");
+    sourceBuilder.append("import java.net.*;\n");
+    sourceBuilder.append("import java.io.*;\n");
+    sourceBuilder.append("import java.sql.*;\n");
     sourceBuilder.append("\n");
 
     // Custom Imports 
-    sourceBuilder.append("// Custom Imports");
-    sourceBuilder.append("\n");
+    sourceBuilder.append("// Custom Imports\n");
     for(String importString : project.getImports()) {
-      sourceBuilder.append("import ");
-      sourceBuilder.append(importString);
-      sourceBuilder.append(";\n");
+      sourceBuilder.append("import " + importString + ";\n");
     }
-    
+
     sourceBuilder.append("\n");
 
     // Class definition
-    sourceBuilder.append("public class Model {");
-    sourceBuilder.append("\n");
+    sourceBuilder.append("public class Model {\n");
 
  
     // Declare static variables
-    sourceBuilder.append("  private static final String DB_DRIVER     = \"org.postgresql.Driver\";");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("  private static final String DB_CONNECTION = \"jdbc:postgresql://127.0.0.1:5432/ics\";");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("  private static final String DB_USER       = \"ics\";");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("  private static final String DB_PASSWORD   = \"ics\";");
+    sourceBuilder.append("  private static final String DB_DRIVER     = \"org.postgresql.Driver\";\n");
+    sourceBuilder.append("  private static final String DB_CONNECTION = \"jdbc:postgresql://127.0.0.1:5432/ics\";\n");
+    sourceBuilder.append("  private static final String DB_USER       = \"ics\";\n");
+    sourceBuilder.append("  private static final String DB_PASSWORD   = \"ics\";\n");
     sourceBuilder.append("\n");
 
     // getConnection method
-    sourceBuilder.append("  public static Connection getDBConnection() {");
+    sourceBuilder.append("  public static Connection getDBConnection() {\n");
     sourceBuilder.append("\n");
+    sourceBuilder.append("    Connection dbConnection = null;\n");
     sourceBuilder.append("\n");
-    sourceBuilder.append("    Connection dbConnection = null;");
+    sourceBuilder.append("    try {\n");
+    sourceBuilder.append("      Class.forName(DB_DRIVER);\n");
+    sourceBuilder.append("    }\n");
+    sourceBuilder.append("    catch (ClassNotFoundException e) {\n");
+    sourceBuilder.append("      System.out.println(e.getMessage());\n");
+    sourceBuilder.append("    }\n");
+    sourceBuilder.append("    try {\n");
+    sourceBuilder.append("      dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);\n");
+    sourceBuilder.append("      return dbConnection;\n");
     sourceBuilder.append("\n");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    try {");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("      Class.forName(DB_DRIVER);");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    }");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    catch (ClassNotFoundException e) {");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("      System.out.println(e.getMessage());");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    }");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    try {");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("      dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("      return dbConnection;");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    }");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    catch (SQLException e) {");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("      System.out.println(e.getMessage());");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    }");
-    sourceBuilder.append("\n");
+    sourceBuilder.append("    }\n");
+    sourceBuilder.append("    catch (SQLException e) {\n");
+    sourceBuilder.append("      System.out.println(e.getMessage());\n");
+    sourceBuilder.append("    }\n");
 
-    sourceBuilder.append("    return dbConnection;");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("  }");
-    sourceBuilder.append("\n");
+    sourceBuilder.append("    return dbConnection;\n");
+    sourceBuilder.append("  }\n");
 
-    sourceBuilder.append("  public static java.sql.Timestamp getCurrentTimeStamp() {");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    java.util.Date today = new java.util.Date();");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("    return new java.sql.Timestamp(today.getTime());");
-    sourceBuilder.append("\n");
-    sourceBuilder.append("  }");
+    // getCurrentTimeStamp method
+    sourceBuilder.append("  public static java.sql.Timestamp getCurrentTimeStamp() {\n");
+    sourceBuilder.append("    java.util.Date today = new java.util.Date();\n");
+    sourceBuilder.append("    return new java.sql.Timestamp(today.getTime());\n");
+    sourceBuilder.append("  }\n");
 
     sourceBuilder.append("\n");
 

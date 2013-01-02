@@ -39,6 +39,7 @@ public class JavaSourceController {
     }
 
     ModelCreateController modelCreate = new ModelCreateController(project);
+    PojoCreateController pojoCreate   = new PojoCreateController(project);
   }  
 }
 

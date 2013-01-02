@@ -3,23 +3,37 @@ package com.perficient.ics.javasource.model;
 import java.util.*;
 
 public class Project {
-  private String name;
+  private String projectName;
+  private String className;
   private ArrayList<String> imports;
   private ArrayList<Property> properties;
 
-
   /**
-   * @param name the name to set
+   * @param projectName the projectName to set
    */
-  public void setName(String name) {
-    this.name = name;
+  public void setProjectName(String projectName) {
+    this.projectName = projectName;
   }
 
   /**
-   * @return the name
+   * @return the projectName
    */
-  public String getName() {
-    return name;
+  public String getProjectName() {
+    return projectName;
+  }
+
+  /**
+   * @param className the className to set
+   */
+  public void setClassName(String className) {
+    this.className = className;
+  }
+
+  /**
+   * @return the className
+   */
+  public String getClassName() {
+    return className;
   }
 
   /**
