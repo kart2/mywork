@@ -33,7 +33,7 @@ public class PojoCreateController {
     sourceBuilder.append("\n");
 
     // Class definition
-    sourceBuilder.append("public class " + project.getClassName() + " {");
+    sourceBuilder.append("public class " + project.getClassName() + " extends " + project.getClassName() + "Persist {");
     sourceBuilder.append("\n");
 
  

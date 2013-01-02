@@ -38,8 +38,9 @@ public class JavaSourceController {
       e.printStackTrace();
     }
 
-    ModelCreateController modelCreate = new ModelCreateController(project);
-    PojoCreateController pojoCreate   = new PojoCreateController(project);
+    ModelCreateController       modelCreate         = new ModelCreateController(project);
+    PojoCreateController        pojoCreate          = new PojoCreateController(project);
+    PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
   }  
 }
 
