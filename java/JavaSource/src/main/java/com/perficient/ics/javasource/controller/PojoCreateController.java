@@ -8,6 +8,7 @@ import org.apache.commons.lang.WordUtils;
 import com.perficient.ics.javasource.model.*;
 
 public class PojoCreateController {
+  private String source;
   public PojoCreateController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
@@ -61,6 +62,20 @@ public class PojoCreateController {
     // End Class definition
     sourceBuilder.append("}\n");
 
-    System.out.println(sourceBuilder.toString());
+    this.source = sourceBuilder.toString();
+  }
+
+  /**
+   * @param source the source to set
+   */
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+  /**
+   * @return the source
+   */
+  public String getSource() {
+    return source;
   }
 }

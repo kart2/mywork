@@ -9,6 +9,7 @@ import com.perficient.ics.javasource.model.*;
 
 public class PojoPersistCreateController {
   private Project project;
+  private String source;
   private StringBuilder sourceBuilder;
 
   public PojoPersistCreateController(Project project) {
@@ -54,9 +55,7 @@ public class PojoPersistCreateController {
     // End Class definition
     sourceBuilder.append("}\n");
 
-    System.out.println(sourceBuilder.toString());
-
-
+    this.source = sourceBuilder.toString();
   }
 
   public void init() {
@@ -389,5 +388,19 @@ public class PojoPersistCreateController {
    */
   public StringBuilder getSourceBuilder() {
     return sourceBuilder;
+  }
+
+  /**
+   * @param source the source to set
+   */
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+  /**
+   * @return the source
+   */
+  public String getSource() {
+    return source;
   }
 }

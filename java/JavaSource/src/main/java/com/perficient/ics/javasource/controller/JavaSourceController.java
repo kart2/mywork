@@ -4,8 +4,9 @@ import java.util.*;
 import java.net.*;
 import java.io.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -38,9 +39,62 @@ public class JavaSourceController {
       e.printStackTrace();
     }
 
+    PomCreateController         pomCreate           = new PomCreateController(project);
     ModelCreateController       modelCreate         = new ModelCreateController(project);
     PojoCreateController        pojoCreate          = new PojoCreateController(project);
     PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
+
+    ControllerCreateController  controllerCreate    = new ControllerCreateController(project);
+
+    try {
+      String zipFile = project.getProjectName() + ".zip";
+      // Create zip file
+      FileOutputStream outputStream = new FileOutputStream(zipFile);
+
+      // Create object of ZipOutputStream from FileOutputStream
+      ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream);
+
+      // Create pom.xml
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/pom.xml"));
+
+      zipOutputStream.write(pomCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Model
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/Model.java"));
+
+      zipOutputStream.write(modelCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Pojo
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/" + project.getClassName() + ".java"));
+
+      zipOutputStream.write(pojoCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create PojoPersist
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/" + project.getClassName() + "Persist.java"));
+
+      zipOutputStream.write(pojoPersistCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Controller
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getProjectName() + "Controller.java"));
+
+      zipOutputStream.write(controllerCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+  
+      zipOutputStream.flush();
+      outputStream.flush();
+  
+      zipOutputStream.close();
+      outputStream.close();
+    }  
+    catch(Exception ex) {
+      ex.printStackTrace();
+    }
+
   }  
+
 }
 

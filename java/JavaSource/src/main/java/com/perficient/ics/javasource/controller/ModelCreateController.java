@@ -7,6 +7,8 @@ import java.io.*;
 import com.perficient.ics.javasource.model.*;
 
 public class ModelCreateController {
+  private String source;
+
   public ModelCreateController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
@@ -74,6 +76,20 @@ public class ModelCreateController {
     // End Class definition
     sourceBuilder.append("}\n");
 
-    System.out.println(sourceBuilder.toString());
+    this.source = sourceBuilder.toString();
+  }
+
+  /**
+   * @param source the source to set
+   */
+  public void setSource(String source) {
+    this.source = source;
+  }
+
+  /**
+   * @return the source
+   */
+  public String getSource() {
+    return source;
   }
 }
