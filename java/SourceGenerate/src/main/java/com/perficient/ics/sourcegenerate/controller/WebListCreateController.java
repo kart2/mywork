@@ -40,7 +40,7 @@ public class WebListCreateController {
     sourceBuilder.append("    urlPatterns = {\"/" + project.getClassName().toLowerCase() + "-list\"}\n");
     sourceBuilder.append("  )\n");
     sourceBuilder.append("\n");
-    sourceBuilder.append("public class " + project.getClassName() + " extends HttpServlet {\n");
+    sourceBuilder.append("public class " + project.getClassName() + "ListController extends HttpServlet {\n");
     sourceBuilder.append("  @Override\n");
     sourceBuilder.append("  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\n");
     sourceBuilder.append("    ServletOutputStream out = resp.getOutputStream();\n");
