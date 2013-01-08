@@ -256,16 +256,18 @@ public class PojoPersistCreateController {
 
     int i = 1;
     for(Property property : project.getProperties()) {
-      if(property.getType().equals("int")) {
-        sourceBuilder.append("        preparedStatement.setInt(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
+      if(!(property.getType().equals("int") && property.getName().equals(primaryKey))) {
+        if(property.getType().equals("int")) {
+          sourceBuilder.append("        preparedStatement.setInt(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
+        }
+        else if(property.getType().equals("double")) {
+          sourceBuilder.append("        preparedStatement.setDouble(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
+        }
+        else if(property.getType().equals("String")) {
+          sourceBuilder.append("        preparedStatement.setString(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
+        }
+        i++;
       }
-      else if(property.getType().equals("double")) {
-        sourceBuilder.append("        preparedStatement.setDouble(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
-      }
-      else if(property.getType().equals("String")) {
-        sourceBuilder.append("        preparedStatement.setString(" + i + ", " + project.getClassName().toLowerCase() + ".get" + WordUtils.capitalizeFully(property.getName()) + "());\n");
-      }
-      i++;
     }
 
     sourceBuilder.append("\n");
