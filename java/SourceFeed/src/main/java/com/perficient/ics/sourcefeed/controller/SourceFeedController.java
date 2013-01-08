@@ -40,8 +40,13 @@ public class SourceFeedController {
     catch(Exception e) {
       e.printStackTrace();
     }
+
+    String command = "perl ./target/classes/source-feed.pl " + project.getFromSource().getFileName() + ' ' + project.getFromSource().getProjectName() + ' ' + project.getFromSource().getPackageName() + ' ' + project.getFromSource().getClassName() + ' ' + project.getToSource().getFileName() + ' ' + project.getToSource().getProjectName() + ' ' + project.getToSource().getPackageName() + ' ' + project.getToSource().getClassName();
+    System.out.println(command);
     
     CommandLine cmdLine = CommandLine.parse("perl ./target/classes/source-feed.pl " + project.getFromSource().getFileName() + ' ' + project.getFromSource().getProjectName() + ' ' + project.getFromSource().getPackageName() + ' ' + project.getFromSource().getClassName() + ' ' + project.getToSource().getFileName() + ' ' + project.getToSource().getProjectName() + ' ' + project.getToSource().getPackageName() + ' ' + project.getToSource().getClassName() );
+
+
     DefaultExecutor executor = new DefaultExecutor();
 
     try {
