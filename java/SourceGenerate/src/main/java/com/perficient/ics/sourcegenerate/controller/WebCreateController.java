@@ -43,7 +43,7 @@ public class WebCreateController {
     sourceBuilder.append("  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {\n");
     sourceBuilder.append("    ServletOutputStream out = resp.getOutputStream();\n");
     sourceBuilder.append("\n");
-    sourceBuilder.append("    " + project.getClassName() + ".deleteAll();\n");
+    sourceBuilder.append("    " + project.getClassName() + ".init();\n");
     sourceBuilder.append("\n");
     sourceBuilder.append("    ArrayList<" + project.getClassName() + "> " + project.getClassName().toLowerCase() + "s = new ArrayList<" + project.getClassName() + ">();\n");
     sourceBuilder.append("    " + project.getClassName().toLowerCase() + "s.add(new " + project.getClassName() + "(0, \"Weather\"   , \"" + project.getProjectName().toLowerCase() + " Info Weather KJQF\"));\n");

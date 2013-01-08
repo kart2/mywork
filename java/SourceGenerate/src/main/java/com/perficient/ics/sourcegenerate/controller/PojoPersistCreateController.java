@@ -73,7 +73,7 @@ public class PojoPersistCreateController {
     for(Property property : project.getProperties()) {
 
       // Primary key
-      String primaryKey = project.getClassName() + "Id";
+      String primaryKey = project.getClassName().toLowerCase() + "Id";
       if(property.getType().equals("int") && property.getName().equals(primaryKey)) {
         sourceBuilder.append("    stringBuilder.append(\"" + property.getName().toLowerCase() + " serial PRIMARY KEY");
       }
@@ -213,7 +213,7 @@ public class PojoPersistCreateController {
 
     int size = project.getProperties().size();
     for(Property property : project.getProperties()) {
-      sourceBuilder.append(property.getName());
+      sourceBuilder.append(property.getName().toLowerCase());
       if(--size != 0) {
         sourceBuilder.append(", ");
       }
@@ -265,7 +265,7 @@ public class PojoPersistCreateController {
     sourceBuilder.append(" \n");
     sourceBuilder.append("      dbConnection.commit();\n");
     sourceBuilder.append(" \n");
-    sourceBuilder.append("      System.out.println(\"Records inserted into agent table!\");\n");
+    sourceBuilder.append("      System.out.println(\"Records inserted into " + project.getClassName().toLowerCase() + " table!\");\n");
     sourceBuilder.append(" \n");
     sourceBuilder.append("    } \n");
     sourceBuilder.append("    catch (SQLException e) {\n");
