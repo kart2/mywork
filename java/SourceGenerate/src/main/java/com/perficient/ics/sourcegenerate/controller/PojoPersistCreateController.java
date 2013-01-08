@@ -212,10 +212,17 @@ public class PojoPersistCreateController {
     sourceBuilder.append("        + \"(");
 
     int size = project.getProperties().size();
+    String primaryKey = project.getClassName().toLowerCase() + "Id";
+
     for(Property property : project.getProperties()) {
-      sourceBuilder.append(property.getName().toLowerCase());
-      if(--size != 0) {
-        sourceBuilder.append(", ");
+
+       size--;
+
+      if(!(property.getType().equals("int") && property.getName().equals(primaryKey))) {
+        sourceBuilder.append(property.getName().toLowerCase());
+        if(size != 0) {
+         sourceBuilder.append(", ");
+        }
       }
     }
 
@@ -223,10 +230,16 @@ public class PojoPersistCreateController {
     sourceBuilder.append("        + \"(");
 
     size = project.getProperties().size();
+
     for(Property property : project.getProperties()) {
-      sourceBuilder.append("?");
-      if(--size != 0) {
-        sourceBuilder.append(", ");
+
+       size--;
+
+      if(!(property.getType().equals("int") && property.getName().equals(primaryKey))) {
+        sourceBuilder.append("?");
+        if(size != 0) {
+          sourceBuilder.append(", ");
+        }
       }
     }
 
