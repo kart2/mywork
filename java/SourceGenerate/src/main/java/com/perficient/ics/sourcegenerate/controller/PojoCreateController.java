@@ -45,6 +45,31 @@ public class PojoCreateController {
 
     sourceBuilder.append("\n");
 
+    // Constructor method
+    sourceBuilder.append("  public " + project.getClassName() + "(");
+
+    int size = project.getProperties().size();
+    for(Property property : project.getProperties()) {
+       sourceBuilder.append(property.getType() + " " + property.getName());
+
+      if(--size == 0) {
+        sourceBuilder.append(")" + " {");
+      } else {
+        sourceBuilder.append(", ");
+      }
+
+    }
+
+    sourceBuilder.append("\n");
+
+    for(Property property : project.getProperties()) {
+       sourceBuilder.append("    this." + property.getName() + " = " + property.getName() + ";");
+       sourceBuilder.append("\n");
+    }
+
+    sourceBuilder.append("  }");
+    sourceBuilder.append("\n");
+
     // Accessor methods
     for(Property property : project.getProperties()) {
 
