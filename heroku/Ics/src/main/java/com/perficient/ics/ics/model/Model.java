@@ -1,4 +1,4 @@
-package com.perficient.ics.model;
+package com.perficient.ics.ics.model;
 
 import java.util.*;
 import java.net.*;

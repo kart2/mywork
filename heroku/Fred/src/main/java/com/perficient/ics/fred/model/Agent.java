@@ -1,4 +1,4 @@
-package com.perficient.ics.model;
+package com.perficient.ics.fred.model;
 
 public class Agent extends AgentPersist {
   private int agentId;

@@ -26,7 +26,27 @@ import com.perficient.tabasco.model.Product;
 
 public class ProductListController extends Controller {
   @Override
-  public void doController(HttpServletRequest req, HttpServletResponse resp) {
+  public void doController(HttpServletRequest request, HttpServletResponse resp) {
+
+    // Get parameters
+    // rows=32&page=2&sidx=name&sord=desc
+    int page          = 0;
+    int rowCount      = 0;
+    String sortColumn = "";
+    String sortOrder  = "";
+
+    if( request.getParameterMap().containsKey("page")) {
+      page = Integer.valueOf(request.getParameter("page").toString());
+    }
+    if( request.getParameterMap().containsKey("rows")) {
+      rowCount = Integer.valueOf(request.getParameter("rows").toString());
+    }
+    if( request.getParameterMap().containsKey("sidx")) {
+      sortColumn = request.getParameter("sidx").toString();
+    }
+    if( request.getParameterMap().containsKey("sord")) {
+      sortOrder = request.getParameter("sord").toString();
+    }
 
     ArrayList<Product> products = null;
     try {
@@ -38,6 +58,7 @@ public class ProductListController extends Controller {
 
     try {
       ServletOutputStream out = resp.getOutputStream();
+      //String json = Product.toJsonGrid(products, page, rowCount);
       String json = Product.toJsonGrid(products);
       out.write(json.getBytes());
     

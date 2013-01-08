@@ -1,4 +1,4 @@
-package com.perficient.ics.model;
+package com.perficient.ics.ics.model;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;

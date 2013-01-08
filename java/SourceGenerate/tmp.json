@@ -1,0 +1,21 @@
+{
+  "packageName" :  "com.perficient.ics.myrxweb",
+  "projectName" :  "MyRxWeb",
+  "className"   :  "Prescription",
+  "imports"     :  
+    [
+      "java.io.*",
+      "java.net.*"
+    ],
+  "properties"  :
+    [
+      {
+        "type"  : "String",
+        "name"  : "name"
+      },
+      {
+        "type"  : "String",
+        "name"  : "description"
+      }
+    ]
+}

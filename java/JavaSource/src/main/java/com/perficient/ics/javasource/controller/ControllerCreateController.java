@@ -30,7 +30,7 @@ public class ControllerCreateController {
     sourceBuilder.append("\n");
     sourceBuilder.append("public class " + project.getProjectName()  + "Controller {\n");
     sourceBuilder.append("  public static void main( String[] args ) {\n");
-    sourceBuilder.append("    System.out.println(" + project.getProjectName() + ");\n");
+    sourceBuilder.append("    System.out.println(\"" + project.getProjectName() + "\");\n");
     sourceBuilder.append("\n");
     sourceBuilder.append("  }\n");
 

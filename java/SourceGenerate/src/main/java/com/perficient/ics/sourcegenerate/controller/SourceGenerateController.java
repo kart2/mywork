@@ -1,4 +1,4 @@
-package com.perficient.ics.javasource.controller;
+package com.perficient.ics.sourcegenerate.controller;
 
 import java.util.*;
 import java.net.*;
@@ -11,14 +11,14 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.perficient.ics.javasource.model.*;
+import com.perficient.ics.sourcegenerate.model.*;
 
-public class JavaSourceController {
+public class SourceGenerateController {
   public static void main( String[] args ) {
     int length = args.length;
-     
+
     if (length != 1) {
-      System.out.println("Usage: JavaSourceController <JSON File>");  
+      System.out.println("Usage: JavaSourceController <JSON File>");
       System.out.println("JSON file should contain:\n");
       System.out.println("  {");
       System.out.println("    \"name\" :  \"myproject\"");
@@ -31,6 +31,7 @@ public class JavaSourceController {
     System.out.println("JSON File: " + jsonFileName + "\n");
 
     ObjectMapper mapper = new ObjectMapper();
+
     Project project = null;
     try {
       project = mapper.readValue(new File(jsonFileName), Project.class);
@@ -43,8 +44,6 @@ public class JavaSourceController {
     ModelCreateController       modelCreate         = new ModelCreateController(project);
     PojoCreateController        pojoCreate          = new PojoCreateController(project);
     PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
-
-    ControllerCreateController  controllerCreate    = new ControllerCreateController(project);
 
     try {
       String zipFile = project.getProjectName() + ".zip";
@@ -62,7 +61,6 @@ public class JavaSourceController {
 
       // Create Model
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/Model.java"));
-
       zipOutputStream.write(modelCreate.getSource().getBytes());
       zipOutputStream.closeEntry();
 
@@ -78,23 +76,15 @@ public class JavaSourceController {
       zipOutputStream.write(pojoPersistCreate.getSource().getBytes());
       zipOutputStream.closeEntry();
 
-      // Create Controller
-      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getProjectName() + "Controller.java"));
-
-      zipOutputStream.write(controllerCreate.getSource().getBytes());
-      zipOutputStream.closeEntry();
-  
       zipOutputStream.flush();
       outputStream.flush();
-  
+
       zipOutputStream.close();
       outputStream.close();
-    }  
+    }
     catch(Exception ex) {
       ex.printStackTrace();
     }
 
-  }  
-
+  }
 }
-

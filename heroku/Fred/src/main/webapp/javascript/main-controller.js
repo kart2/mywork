@@ -4,7 +4,7 @@ function MainController() {
 
   function agentList() {
 
-    $.getJSON('/ics', function(data) {
+    $.getJSON('/agent-list', function(data) {
       var items = [];
     
       $.each(data, function(index) {

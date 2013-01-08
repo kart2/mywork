@@ -1,4 +1,4 @@
-package com.perficient.ics.controller;
+package com.perficient.ics.ics.controller;
 
 import java.util.*;
 import java.net.*;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.perficient.ics.model.Agent;
+import com.perficient.ics.ics.model.Agent;
 
 @WebServlet(
     name = "AgentCreateController", 

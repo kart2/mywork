@@ -17,8 +17,8 @@ function MainController() {
         {name:'price', index:'price', width:150, align:'right',formatter:'currency'} 
       ],
       pager: '#product-list-pager',
-      rowNum:50,
-      rowList:[50,100,200],
+      rowNum:32,
+      rowList:[32,64],
       sortname: 'name',
       sortorder: 'desc',
       viewrecords: true,

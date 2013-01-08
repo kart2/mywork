@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.perficient.ics.ics</groupId>
-  <artifactId>Ics</artifactId>
+  <groupId>com.perficient.ics.fred</groupId>
+  <artifactId>Fred</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Ics</name>
+  <name>Fred</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -54,7 +54,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>ics</finalName>
+    <finalName>fred</finalName>
     <plugins>
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
@@ -64,7 +64,7 @@
                 <assembleDirectory>target</assembleDirectory>
                 <programs>
                     <program>
-                        <mainClass>com.perficient.ics.ics.launch.Main</mainClass>
+                        <mainClass>com.perficient.ics.fred.launch.Main</mainClass>
                         <name>webapp</name>
                     </program>
                 </programs>

@@ -1,8 +1,6 @@
-package com.perficient.ics.controller;
+package com.perficient.ics.fred.controller;
 
 import java.io.IOException;
-
-
 
 import java.util.*;
 import java.net.*;
@@ -19,14 +17,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.perficient.ics.model.Agent;
+import com.perficient.ics.fred.model.Agent;
 
 @WebServlet(
-    name = "IcsController", 
-    urlPatterns = {"/ics"}
+    name = "AgentListController", 
+    urlPatterns = {"/agent-list"}
   )
 
-public class IcsController extends HttpServlet {
+public class AgentListController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     ServletOutputStream out = resp.getOutputStream();

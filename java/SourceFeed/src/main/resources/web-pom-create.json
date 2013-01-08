@@ -1,0 +1,16 @@
+{
+  "fromSource"  :
+    {
+      "fileName"    :  "/Users/seanwright/dev/ics/projects/heroku/Fred/pom.xml",
+      "packageName" :  "com.perficient.ics.fred.controller",
+      "projectName" :  "Fred",
+      "className"   :  "na"
+    },
+  "toSource"  :
+    {
+      "fileName"    :  "/Users/seanwright/dev/ics/projects/java/SourceGenerate/src/main/java/com/perficient/ics/sourcegenerate/controller/WebPomCreateController.java",
+      "packageName" :  "com.perficient.ics.sourcegenerate",
+      "projectName" :  "SourceGenerate",
+      "className"   :  "WebPomCreateController"
+    }
+}

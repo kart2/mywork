@@ -1,0 +1,22 @@
+{
+  "sEcho": 1,
+  "iTotalRecords": "2",
+  "iTotalDisplayRecords": "2",
+  "aaData": [
+    [
+      "Weather",
+      "Weather Agent"
+    ],
+    [
+      "Time",
+      "Time Agent"
+    ]
+  ],
+  "asSorting": [
+    [ 1, "desc" ]
+  ],
+  "aoColumns": [
+    { "sTitle": "Name" },
+    { "sTitle": "Description" }
+  ]
+}
