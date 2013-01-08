@@ -45,6 +45,9 @@ public class HerokuGenerateController {
     PojoCreateController        pojoCreate          = new PojoCreateController(project);
     PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
     WebListCreateController     webListCreate       = new WebListCreateController(project);
+    WebIndexJspCreateController webIndexJspCreate   = new WebIndexJspCreateController(project);
+    WebMainJavascriptCreateController webMainJavascriptCreate   = new WebMainJavascriptCreateController(project);
+    WebLaunchCreateController webLaunchCreate   = new WebLaunchCreateController(project);
 
     try {
       String zipFile = project.getProjectName() + ".zip";
@@ -81,6 +84,24 @@ public class HerokuGenerateController {
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getClassName() + "ListController.java"));
 
       zipOutputStream.write(webListCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Index JSP
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/index.jsp"));
+
+      zipOutputStream.write(webIndexJspCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Main Javascript Controller
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/javascript/main-controller.js"));
+
+      zipOutputStream.write(webMainJavascriptCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Web Launch
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/launch/Main.java"));
+
+      zipOutputStream.write(webLaunchCreate.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       zipOutputStream.flush();
