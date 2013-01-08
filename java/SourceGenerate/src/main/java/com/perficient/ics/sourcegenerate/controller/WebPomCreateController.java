@@ -20,7 +20,7 @@ public class WebPomCreateController {
     sourceBuilder.append("  <groupId>com.perficient.ics." + project.getProjectName().toLowerCase() + "</groupId>\n");
     sourceBuilder.append("  <artifactId>" + project.getProjectName() + "</artifactId>\n");
     sourceBuilder.append("  <version>1.0-SNAPSHOT</version>\n");
-    sourceBuilder.append("  <" + project.getClassName() + "me>" + project.getProjectName() + "</" + project.getClassName() + "me>\n");
+    sourceBuilder.append("  <name>" + project.getProjectName() + "</name>\n");
     sourceBuilder.append("  <url>http://maven.apache.org</url>\n");
     sourceBuilder.append("  <dependencies>\n");
     sourceBuilder.append("    <dependency>\n");
@@ -70,7 +70,7 @@ public class WebPomCreateController {
     sourceBuilder.append("    </dependency>\n");
     sourceBuilder.append("  </dependencies>\n");
     sourceBuilder.append("  <build>\n");
-    sourceBuilder.append("    <fi" + project.getClassName() + "lName>" + project.getProjectName().toLowerCase() + "</fi" + project.getClassName() + "lName>\n");
+    sourceBuilder.append("    <finalName>" + project.getProjectName().toLowerCase() + "</finalName>\n");
     sourceBuilder.append("    <plugins>\n");
     sourceBuilder.append("        <plugin>\n");
     sourceBuilder.append("            <groupId>org.codehaus.mojo</groupId>\n");
@@ -81,7 +81,7 @@ public class WebPomCreateController {
     sourceBuilder.append("                <programs>\n");
     sourceBuilder.append("                    <program>\n");
     sourceBuilder.append("                        <mainClass>com.perficient.ics." + project.getProjectName().toLowerCase() + ".launch.Main</mainClass>\n");
-    sourceBuilder.append("                        <" + project.getClassName() + "me>webapp</" + project.getClassName() + "me>\n");
+    sourceBuilder.append("                        <name>webapp</name>\n");
     sourceBuilder.append("                    </program>\n");
     sourceBuilder.append("                </programs>\n");
     sourceBuilder.append("            </configuration>\n");
