@@ -1,0 +1,16 @@
+{
+  "fromSource"  :
+    {
+      "fileName"    :  "/Users/seanwright/dev/ics/projects/heroku/Fred/src/main/java/com/perficient/ics/fred/launch/Main.java",
+      "packageName" :  "com.perficient.ics.fred.controller",
+      "projectName" :  "Fred",
+      "className"   :  "aaaa"
+    },
+  "toSource"  :
+    {
+      "fileName"    :  "/Users/seanwright/dev/ics/projects/java/SourceGenerate/src/main/java/com/perficient/ics/sourcegenerate/controller/WebLaunchCreateController.java",
+      "packageName" :  "com.perficient.ics.sourcegenerate",
+      "projectName" :  "SourceGenerate",
+      "className"   :  "WebLaunchCreateController"
+    }
+}
