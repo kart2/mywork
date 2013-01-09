@@ -1,4 +1,4 @@
-package com.perficient.ics.sourcegenerate.controller;
+package com.perficient.ics.sourcegenerate.controller.heroku;
 
 import java.util.*;
 import java.net.*;
@@ -7,9 +7,9 @@ import org.apache.commons.lang.WordUtils;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class WebIndexJspCreateController {
+public class WebIndexJspController {
   private String source;
-  public WebIndexJspCreateController(Project project) {
+  public WebIndexJspController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
 

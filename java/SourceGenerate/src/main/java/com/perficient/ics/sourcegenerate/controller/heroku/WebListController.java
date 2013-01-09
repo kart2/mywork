@@ -7,9 +7,9 @@ import org.apache.commons.lang.WordUtils;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class WebListCreateController {
+public class WebListController {
   private String source;
-  public WebListCreateController(Project project) {
+  public WebListController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
 

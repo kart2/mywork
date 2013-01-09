@@ -1,4 +1,4 @@
-package com.perficient.ics.sourcegenerate.controller;
+package com.perficient.ics.sourcegenerate.controller.java;
 
 import java.util.*;
 import java.net.*;
@@ -7,12 +7,12 @@ import org.apache.commons.lang.WordUtils;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class PojoPersistCreateController {
+public class PojoPersistController {
   private Project project;
   private String source;
   private StringBuilder sourceBuilder;
 
-  public PojoPersistCreateController(Project project) {
+  public PojoPersistController(Project project) {
 
     this.project = project;
 

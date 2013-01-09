@@ -1,4 +1,4 @@
-package com.perficient.ics.sourcegenerate.controller;
+package com.perficient.ics.sourcegenerate.controller.java;
 
 import java.util.*;
 import java.net.*;
@@ -7,9 +7,9 @@ import org.apache.commons.lang.WordUtils;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class PojoCreateController {
+public class PojoController {
   private String source;
-  public PojoCreateController(Project project) {
+  public PojoController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
 
