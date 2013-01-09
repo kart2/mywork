@@ -1,4 +1,4 @@
-package com.perficient.ics.sourcegenerate.controller;
+package com.perficient.ics.sourcegenerate.controller.heroku;
 
 import java.util.*;
 import java.net.*;
@@ -13,7 +13,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class SourceGenerateController {
+public class HerokuGenerateController {
   public static void main( String[] args ) {
     int length = args.length;
 
@@ -40,10 +40,15 @@ public class SourceGenerateController {
       e.printStackTrace();
     }
 
-    PomCreateController         pomCreate           = new PomCreateController(project);
+    WebPomCreateController      pomCreate           = new WebPomCreateController(project);
     ModelCreateController       modelCreate         = new ModelCreateController(project);
     PojoCreateController        pojoCreate          = new PojoCreateController(project);
     PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
+    WebListCreateController     webListCreate       = new WebListCreateController(project);
+    WebIndexJspCreateController webIndexJspCreate   = new WebIndexJspCreateController(project);
+    WebCreateController webCreate                   = new WebCreateController(project);
+    WebMainJavascriptCreateController webMainJavascriptCreate   = new WebMainJavascriptCreateController(project);
+    WebLaunchCreateController webLaunchCreate   = new WebLaunchCreateController(project);
 
     try {
       String zipFile = project.getProjectName() + ".zip";
@@ -74,6 +79,36 @@ public class SourceGenerateController {
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/" + project.getClassName() + "Persist.java"));
 
       zipOutputStream.write(pojoPersistCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create WebListController
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getClassName() + "ListController.java"));
+
+      zipOutputStream.write(webListCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Index JSP
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/index.jsp"));
+
+      zipOutputStream.write(webIndexJspCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Main Javascript Controller
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/javascript/main-controller.js"));
+
+      zipOutputStream.write(webMainJavascriptCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create Web Launch
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/launch/Main.java"));
+
+      zipOutputStream.write(webLaunchCreate.getSource().getBytes());
+      zipOutputStream.closeEntry();
+
+      // Create WebCreateController
+      zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getClassName() + "CreateController.java"));
+
+      zipOutputStream.write(webCreate.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       zipOutputStream.flush();

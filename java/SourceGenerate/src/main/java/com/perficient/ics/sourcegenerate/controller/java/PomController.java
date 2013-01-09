@@ -1,4 +1,4 @@
-package com.perficient.ics.sourcegenerate.controller;
+package com.perficient.ics.sourcegenerate.controller.java;
 
 import java.util.*;
 import java.net.*;
@@ -7,9 +7,9 @@ import org.apache.commons.lang.WordUtils;
 
 import com.perficient.ics.sourcegenerate.model.*;
 
-public class PomCreateController {
+public class PomController {
   private String source;
-  public PomCreateController(Project project) {
+  public PomController(Project project) {
 
     StringBuilder sourceBuilder = new StringBuilder();
 
