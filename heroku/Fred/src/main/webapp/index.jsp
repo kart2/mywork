@@ -31,5 +31,8 @@
         mainController.agentList();
       });
     </script>
+
+    <ul id="agent-list"></ul>
+
   </body>
 </html>

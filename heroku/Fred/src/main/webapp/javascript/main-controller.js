@@ -8,13 +8,11 @@ function MainController() {
       var items = [];
     
       $.each(data, function(index) {
-        items.push('<li><div style="font-weight:bold">' + data[index].name + '</div><div style="font-style:italic">' + data[index].description + '</div>');
+        items.push('<li class="agent-' + index + '">' + data[index].name + '<br />' + data[index].description + '</li>');
       });
     
-      $('<ul />', {
-        'class': 'my-new-list',
-        html: items.join('')
-      }).appendTo('body');
+      $('#agent-list').html(items.join(''));
+
     });
   }
 }
