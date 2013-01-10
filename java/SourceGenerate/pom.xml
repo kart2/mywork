@@ -31,7 +31,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.perficient.ics.sourcegenerate.controller.HerokuGenerateController</mainClass>
+              <mainClass>com.perficient.ics.sourcegenerate.controller.heroku.HerokuGenerateController</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>

@@ -73,7 +73,7 @@ public class JavaGenerateController {
       // Create PojoPersist
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/" + project.getClassName() + "Persist.java"));
 
-      zipOutputStream.write(pojoPersistCreate.getSource().getBytes());
+      zipOutputStream.write(pojoPersist.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       zipOutputStream.flush();
