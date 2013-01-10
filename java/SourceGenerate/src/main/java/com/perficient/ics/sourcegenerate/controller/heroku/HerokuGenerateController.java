@@ -12,6 +12,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.perficient.ics.sourcegenerate.model.*;
+import com.perficient.ics.sourcegenerate.controller.java.*;
 
 public class HerokuGenerateController {
   public static void main( String[] args ) {
@@ -40,15 +41,15 @@ public class HerokuGenerateController {
       e.printStackTrace();
     }
 
-    WebPomCreateController      pomCreate           = new WebPomCreateController(project);
+    WebPomController            pomCreate           = new WebPomController(project);
     ModelCreateController       modelCreate         = new ModelCreateController(project);
-    PojoCreateController        pojoCreate          = new PojoCreateController(project);
-    PojoPersistCreateController pojoPersistCreate   = new PojoPersistCreateController(project);
-    WebListCreateController     webListCreate       = new WebListCreateController(project);
-    WebIndexJspCreateController webIndexJspCreate   = new WebIndexJspCreateController(project);
-    WebCreateController webCreate                   = new WebCreateController(project);
-    WebMainJavascriptCreateController webMainJavascriptCreate   = new WebMainJavascriptCreateController(project);
-    WebLaunchCreateController webLaunchCreate   = new WebLaunchCreateController(project);
+    PojoController              pojoCreate          = new PojoController(project);
+    PojoPersistController       pojoPersist         = new PojoPersistController(project);
+    WebListController           webList             = new WebListController(project);
+    WebIndexJspController       webIndexJsp         = new WebIndexJspController(project);
+    WebCreateController         webCreate           = new WebCreateController(project);
+    WebMainJavascriptController webMainJavascript   = new WebMainJavascriptController(project);
+    WebLaunchController         webLaunch           = new WebLaunchController(project);
 
     try {
       String zipFile = project.getProjectName() + ".zip";
@@ -78,31 +79,31 @@ public class HerokuGenerateController {
       // Create PojoPersist
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/model/" + project.getClassName() + "Persist.java"));
 
-      zipOutputStream.write(pojoPersistCreate.getSource().getBytes());
+      zipOutputStream.write(pojoPersist.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       // Create WebListController
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/controller/" + project.getClassName() + "ListController.java"));
 
-      zipOutputStream.write(webListCreate.getSource().getBytes());
+      zipOutputStream.write(webList.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       // Create Index JSP
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/index.jsp"));
 
-      zipOutputStream.write(webIndexJspCreate.getSource().getBytes());
+      zipOutputStream.write(webIndexJsp.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       // Create Main Javascript Controller
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/webapp/javascript/main-controller.js"));
 
-      zipOutputStream.write(webMainJavascriptCreate.getSource().getBytes());
+      zipOutputStream.write(webMainJavascript.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       // Create Web Launch
       zipOutputStream.putNextEntry(new ZipEntry(project.getProjectName() + "/src/main/java/com/perficient/ics/" + project.getProjectName().toLowerCase() + "/launch/Main.java"));
 
-      zipOutputStream.write(webLaunchCreate.getSource().getBytes());
+      zipOutputStream.write(webLaunch.getSource().getBytes());
       zipOutputStream.closeEntry();
 
       // Create WebCreateController

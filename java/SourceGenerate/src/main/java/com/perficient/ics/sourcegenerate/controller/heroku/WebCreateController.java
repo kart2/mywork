@@ -45,9 +45,23 @@ public class WebCreateController {
     sourceBuilder.append("\n");
     sourceBuilder.append("    " + project.getClassName() + ".init();\n");
     sourceBuilder.append("\n");
+
+
     sourceBuilder.append("    ArrayList<" + project.getClassName() + "> " + project.getClassName().toLowerCase() + "s = new ArrayList<" + project.getClassName() + ">();\n");
     sourceBuilder.append("    " + project.getClassName().toLowerCase() + "s.add(new " + project.getClassName() + "(0, \"Weather\"   , \"" + project.getProjectName().toLowerCase() + " Info Weather KJQF\"));\n");
-    sourceBuilder.append("    " + project.getClassName().toLowerCase() + "s.add(new " + project.getClassName() + "(0, \"Time\"   , \"" + project.getProjectName().toLowerCase() + " Info Time\"));\n");
+     sourceBuilder.append("    " + project.getClassName().toLowerCase() + "s.add(new " + project.getClassName() + "(0, \"Time\"   , \"" + project.getProjectName().toLowerCase() + " Info Time\"));\n");
+
+/*
+    for(Property property : project.getProperties()) {
+      if(property.getType().equals("String")) {
+        sourceBuilder.append();
+      } else if(property.getType().equals("int")) {
+        sourceBuilder.append(); 
+      }
+
+    }
+*/
+
     sourceBuilder.append("\n");
     sourceBuilder.append("    " + project.getClassName() + ".create(" + project.getClassName().toLowerCase() + "s);\n");
     sourceBuilder.append("\n");
