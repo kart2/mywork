@@ -8,7 +8,7 @@ function MainController() {
       var items = [];
     
       $.each(data, function(index) {
-        items.push('<li class="agent-' + index + '">' + data[index].name + '<br />' + data[index].description + '</li>');
+        items.push('<li class="agent item-' + index + '"><div class="name"><a href="#">' + data[index].name + '</a></div><div class="description">' + data[index].description + '</div></li>');
       });
     
       $('#agent-list').html(items.join(''));
