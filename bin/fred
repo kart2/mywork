@@ -1,4 +1,0 @@
-#!/usr/bin/perl
-use strict;
-
-print("This will launch the Heroku version of fred!\n");
